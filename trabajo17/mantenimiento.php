@@ -19,7 +19,6 @@
         </div>
 
         <ul class="nav-links">
-          <li><a href="#">Contacto</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">Documentación ▾</a>
             <ul class="dropdown-menu">
@@ -62,11 +61,51 @@
     </header>
     
     <main>
+      <aside class="sidebar">
+        <nav class="menu">
+          <h2 class="menu-title">Mapa del Sitio</h2>
+
+          <ul class="menu-list">
+
+            <li class="menu-item">
+                <a href="index.php">🏠 Inicio</a>
+            </li>
+
+            <li class="menu-section">Gestión</li>
+            <ul class="submenu">
+                <li><a href="gestion/login.php">🔐 Login</a></li>
+                <li><a href="gestion/registro.php">📝 Registro</a></li>
+            </ul>
+
+            <li class="menu-section">Listas <span class="nota">(requiere login)</span></li>
+            <ul class="submenu">
+                <li><a href="Listas/listas.php">📄 Ver listas</a></li>
+                <li><a href="Listas/crearLista.php">➕ Crear lista</a></li>
+                <li><a href="Listas/crearMoroso.php">⚠️ Crear moroso</a></li>
+            </ul>
+
+            <li class="menu-item">
+                <a href="mantenimiento.php">🛠 Mantenimiento</a>
+            </li>
+
+          </ul>
+        </nav>
+      </aside>
       <section>
         <img src="imagenes/problemasTecnicos.gif" alt="imagen de mantenimiento">
-        <audio src="./sonido/mantenimientoSonido.mp3" autoplay></audio>
+        <audio id="miAudio" src="./sonido/mantenimientoSonido.mp3 " autoplay></audio>
+        <p>Pagina en mantenimiento</p>
       </section>
     </main>
+    <script>
+      document.addEventListener("keydown", function iniciarAudio() {
+          const audio = document.getElementById("miAudio");
+          audio.play().catch(err => console.log("Autoplay bloqueado:", err));
+          
+          // Quitar el listener para que no se ejecute cada vez que se presione una tecla
+          document.removeEventListener("keydown", iniciarAudio);
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>

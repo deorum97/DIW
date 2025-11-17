@@ -29,6 +29,78 @@ li {
   text-decoration: none;
 }
 
+.sidebar {
+  width: 250px;
+  background: #141414;
+  color: #eee;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 10em;
+  border-right: 2px solid #1f1f1f;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.menu-title {
+  color: #00ff88;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.menu-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menu-item a {
+  display: block;
+  padding: 10px;
+  color: #ccc;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.menu-item a:hover {
+  background: #222;
+  color: #fff;
+}
+
+.menu-section {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #00b06d;
+  padding-left: 5px;
+}
+
+.submenu {
+  list-style: none;
+  margin: 5px 0 10px 10px;
+  padding-left: 10px;
+  border-left: 2px solid #222;
+}
+
+.submenu li a {
+  display: block;
+  padding: 8px;
+  color: #bbb;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.submenu li a:hover {
+  background: #222;
+  color: #fff;
+}
+
+.nota {
+  font-size: 0.75rem;
+  color: #888;
+}
+
 /* ======== LINKS ======== */
 .nav-links {
   display: flex;

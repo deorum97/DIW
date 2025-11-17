@@ -87,6 +87,36 @@
     </header>
     
     <main>
+      <aside class="sidebar">
+        <nav class="menu">
+          <h2 class="menu-title">Mapa del Sitio</h2>
+
+          <ul class="menu-list">
+
+            <li class="menu-item">
+                <a href="../index.php">🏠 Inicio</a>
+            </li>
+
+            <li class="menu-section">Gestión</li>
+            <ul class="submenu">
+                <li><a href="gestion/login.php">🔐 Login</a></li>
+                <li><a href="gestion/registro.php">📝 Registro</a></li>
+            </ul>
+
+            <li class="menu-section">Listas <span class="nota">(requiere login)</span></li>
+            <ul class="submenu">
+                <li><a href="listas.php">📄 Ver listas</a></li>
+                <li><a href="crearLista.php">➕ Crear lista</a></li>
+                <li><a href="crearMoroso.php">⚠️ Crear moroso</a></li>
+            </ul>
+
+            <li class="menu-item">
+                <a href="../mantenimiento.php">🛠 Mantenimiento</a>
+            </li>
+
+          </ul>
+        </nav>
+      </aside>
       <section class="listas">
         <article>
         <?php

@@ -19,7 +19,7 @@
         </div>
 
         <ul class="nav-links">
-          <li><a href="#">Contacto</a></li>
+          
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">Documentación ▾</a>
             <ul class="dropdown-menu">
@@ -63,27 +63,32 @@
     
     <main>
       <aside class="sidebar">
-        <h2>Mapa del Sitio</h2>
-        <nav>
-          <ul>
-            <li><a href="index.php">Inicio</a></li>
+        <nav class="menu">
+          <h2 class="menu-title">Mapa del Sitio</h2>
 
-            <li><strong>Gestión</strong>
-              <ul>
-                <li><a href="gestion/login.php">Login</a></li>
-                <li><a href="gestion/registro.php">Registro</a></li>
-              </ul>
+          <ul class="menu-list">
+
+            <li class="menu-item">
+                <a href="index.php">🏠 Inicio</a>
             </li>
 
-            <li><strong>Listas (solo se ven si estas logueado)</strong>
-              <ul>
-                <li><a href="Listas/listas.php">Ver listas</a></li>
-                <li><a href="Listas/crearLista.php">Crear lista</a></li>
-                <li><a href="Listas/crearMoroso.php">Crear moroso</a></li>
-              </ul>
+            <li class="menu-section">Gestión</li>
+            <ul class="submenu">
+                <li><a href="gestion/login.php">🔐 Login</a></li>
+                <li><a href="gestion/registro.php">📝 Registro</a></li>
+            </ul>
+
+            <li class="menu-section">Listas <span class="nota">(requiere login)</span></li>
+            <ul class="submenu">
+                <li><a href="Listas/listas.php">📄 Ver listas</a></li>
+                <li><a href="Listas/crearLista.php">➕ Crear lista</a></li>
+                <li><a href="Listas/crearMoroso.php">⚠️ Crear moroso</a></li>
+            </ul>
+
+            <li class="menu-item">
+                <a href="mantenimiento.php">🛠 Mantenimiento</a>
             </li>
 
-            <li><a href="mantenimiento.php">Mantenimiento</a></li>
           </ul>
         </nav>
       </aside>
