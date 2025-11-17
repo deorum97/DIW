@@ -7,6 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Gestor de gastos sencillo, crea listas, registra gastos, controla tus deudas fácilmente, paga con bizum">
     <title>PayPay</title>
     
     <link rel="stylesheet" href="estilos/style2.css">
@@ -38,7 +39,7 @@
                   <a href="#" class="dropdown-toggle"><?php echo $_SESSION["usuario"]; ?> ▾</a>
                   <ul class="dropdown-menu-usuario">
                     <li><a href="listas/listas.php">Mis gastos</a></li>
-                    <li><a href="#">Perfil</a></li>
+                    <li><a href="mantenimiento">Perfil</a></li>
                   </ul>
                 </li>
                 <a href="gestion/unLogin.php">

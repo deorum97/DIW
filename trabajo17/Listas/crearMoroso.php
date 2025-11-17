@@ -48,7 +48,7 @@
                   <a href="#" class="dropdown-toggle"><?php echo $_SESSION["usuario"]; ?> ▾</a>
                   <ul class="dropdown-menu-usuario">
                     <li><a href="listas.php">Mis gastos</a></li>
-                    <li><a href="#">Perfil</a></li>
+                    <li><a href="../mantenimiento">Perfil</a></li>
                   </ul>
                 </li>
                 <a href="../gestion/unLogin.php">

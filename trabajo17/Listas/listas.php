@@ -63,7 +63,7 @@
                   <a href="#" class="dropdown-toggle"><?php echo $_SESSION["usuario"]; ?> ▾</a>
                   <ul class="dropdown-menu-usuario">
                     <li><a href="listas.php">Mis gastos</a></li>
-                    <li><a href="#">Perfil</a></li>
+                    <li><a href="../mantenimiento">Perfil</a></li>
                   </ul>
                 </li>
                 <a href="../gestion/unLogin.php">
@@ -144,7 +144,7 @@
               $sqlUsuario = "SELECT `nombre` FROM `usuarios` WHERE `id_usuario` = '".$rowg['id_usuario']."';";
               $stmtU = $conn->prepare($sqlUsuario);
               $stmtU->execute();
-              $resultu = $stmtU->setFetchMode(PDO::FETCH_ASSOC); 
+              $resultu = $stmtU->setFetchMode(PDO::FETCH_ASSOC);
               $resultu = $stmtU->fetchAll(PDO::FETCH_ASSOC);
 
               echo "<div class='elemento_lista'>";

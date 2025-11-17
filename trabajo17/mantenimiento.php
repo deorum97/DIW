@@ -37,7 +37,7 @@
                   <a href="#" class="dropdown-toggle"><?php echo $_SESSION["usuario"]; ?> ▾</a>
                   <ul class="dropdown-menu-usuario">
                     <li><a href="listas.php">Mis gastos</a></li>
-                    <li><a href="#">Perfil</a></li>
+                    <li><a href="mantenimiento">Perfil</a></li>
                   </ul>
                 </li>
                 <a href="../gestion/unLogin.php">
@@ -51,8 +51,8 @@
             ?>
 
         <div class="nav-buttons">
-          <a href="../gestion/login.php"><button class="btn-outline-dark">Loguearse</button></a>
-          <a href="../gestion/registro.php"><button class="btn-outline-dark">Registrarse</button></a>
+          <a href="gestion/login.php"><button class="btn-outline-dark">Loguearse</button></a>
+          <a href="gestion/registro.php"><button class="btn-outline-dark">Registrarse</button></a>
         </div>
         <?php
               }
