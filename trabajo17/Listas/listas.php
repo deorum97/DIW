@@ -10,7 +10,7 @@
 
     try{
       $usuario =$_SESSION["usuario"];
-      $sql= "SELECT * FROM `gastos` WHERE `id_usuario` = (SELECT `id_usuario` FROM `usuarios` WHERE `nombre_usuario` = '$usuario');";
+      $sql= "SELECT * FROM `gastos` WHERE `id_usuario` = (SELECT `id_usuario` FROM `usuarios` WHERE `nombre` = '$usuario');";
 
       $stmt = $conn->prepare($sql);
       $stmt->execute();
@@ -111,14 +111,14 @@
             }
 
             foreach($resultg as $rowg) {
-              $sqlUsuario = "SELECT `nombre_usuario` FROM `usuarios` WHERE `id_usuario` = '".$rowg['id_usuario']."';";
+              $sqlUsuario = "SELECT `nombre` FROM `usuarios` WHERE `id_usuario` = '".$rowg['id_usuario']."';";
               $stmtU = $conn->prepare($sqlUsuario);
               $stmtU->execute();
               $resultu = $stmtU->setFetchMode(PDO::FETCH_ASSOC); 
               $resultu = $stmtU->fetchAll(PDO::FETCH_ASSOC);
 
               echo "<div class='elemento_lista'>";
-              echo "<p>".$resultu[0]['nombre_usuario']."</p>";
+              echo "<p>".$resultu[0]['nombre']."</p>";
               echo "<p>".$rowg['monto_participacion']."</p>";
               echo "</div>";
             }

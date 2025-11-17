@@ -15,7 +15,7 @@
     $clave = $_POST["clave"];
 
     try{
-      $sql= "SELECT * FROM usuarios where nombre_usuario = '$usuario' AND clave='$clave'";
+      $sql= "SELECT * FROM usuarios where nombre = '$usuario' AND clave='$clave'";
 
       $stmt = $conn->prepare($sql);
       $stmt->execute();

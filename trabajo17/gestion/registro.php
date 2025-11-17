@@ -16,7 +16,7 @@
     $claveR=$_POST["claveR"];
 
     try{
-      $sqlSelect ="SELECT * FROM usuarios WHERE nombre_usuario = '$usuario'";
+      $sqlSelect ="SELECT * FROM usuarios WHERE nombre = '$usuario'";
 
       $stmtSel = $conn->prepare($sqlSelect);
       $stmtSel->execute();
@@ -27,7 +27,7 @@
       if(!empty($resultSel)){
         $usuarioErr = "Ese usuario ya esta en uso";
       }else if($clave===$claveR){
-        $sqlInsert = "INSERT INTO usuarios(nombre_usuario, clave) VALUES ('$usuario', '$clave')";
+        $sqlInsert = "INSERT INTO `usuarios`(`nombre`, `clave`) VALUES ('$usuario', '$clave')";
         $conn->exec($sqlInsert);
         $_SESSION["usuario"]=$usuario;
         $conn=null;

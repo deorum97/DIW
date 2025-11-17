@@ -15,7 +15,7 @@
 
     try{
         $usuario = $_SESSION["usuario"];
-        $sqlInsert = "INSERT INTO `gastos`( `id_usuario`, `descripcion`, `monto`) VALUES ((SELECT id_usuario FROM usuarios WHERE `nombre_usuario` = '$usuario'),'$descripcion', '$monto')";
+        $sqlInsert = "INSERT INTO `gastos`( `id_usuario`, `descripcion`, `monto`) VALUES ((SELECT id_usuario FROM usuarios WHERE `nombre` = '$usuario'),'$descripcion', '$monto')";
         $conn->exec($sqlInsert);
         $conn=null;
         header("Location:./listas.php");
