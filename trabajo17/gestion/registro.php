@@ -2,47 +2,62 @@
   session_start();
 
   if(isset($_SESSION["usuario"])){
-    header("Location:index.php");
+    header("Location:../index.php");
   }
 
-  $usuario = $clave = "";
-  $usuarioErr = $claveErr = "";
+  $usuario = $clave = $claveR = "";
+  $usuarioErr = $claveErr = $claveRErr = "";
 
   if($_SERVER["REQUEST_METHOD"]==="POST"){
-    include("conexion.php");
+    require_once("../gestion/conexion.php");
 
     $usuario=$_POST["usuario"];
     $clave=$_POST["clave"];
+    $claveR=$_POST["claveR"];
 
-    $sqlSelect ="SELECT clave FROM usuarios WHERE `nombre_usuario` = '$usuario'";
-    $resSelect = mysqli_query($conn,$sqlSelect);
-    if(mysqli_num_rows($resSelect)<0){
-      $usuarioErr = "No existe ese usuario";
-    }else{
-      while($row = mysqli_fetch_assoc($resSelect)) {
-        if($row["clave"]==$clave){
-          $_SESSION["usuario"]=$usuario;
-        }
+    try{
+      $sqlSelect ="SELECT * FROM usuarios WHERE nombre_usuario = '$usuario'";
+
+      $stmtSel = $conn->prepare($sqlSelect);
+      $stmtSel->execute();
+
+      $resultSel = $stmtSel->setFetchMode(PDO::FETCH_ASSOC); 
+      $resultSel = $stmtSel->fetchAll();
+
+      if(!empty($resultSel)){
+        $usuarioErr = "Ese usuario ya esta en uso";
+      }else if($clave===$claveR){
+        $sqlInsert = "INSERT INTO usuarios(nombre_usuario, clave) VALUES ('$usuario', '$clave')";
+        $conn->exec($sqlInsert);
+        $_SESSION["usuario"]=$usuario;
+        $conn=null;
+        header("Location:../index.php");
+      }else {
+        $claveRErr="La contraseña que has puestos deben ser iguales";
       }
+
+    }catch(PDOException $e) {
+      $usuarioErr =  $sql . "<br>" . $e->getMessage();
     }
-    
-    mysqli_close($conn);
+
+    $conn=null;
   }
+
 ?>
 
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8" />
-  <title>Login</title>
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="login.css" />
+  <title>Registro</title>
+  <link rel="stylesheet" href="../estilos/main.css" />
+  <link rel="stylesheet" href="../estilos/style2.css" />
 </head>
 <body>
   <main class="login">
     <div class="card">
       <div class="card2">
-        <form class="form" method="post" action="login.php">
-          <p id="heading">Login</p>
+        <form class="form" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+          <p id="heading">Registrarse</p>
           <div class="field">
             <svg
               viewBox="0 0 16 16"
@@ -74,7 +89,7 @@
           </div>
           <?php
             if(!empty(trim($usuarioErr))){
-              echo "<p>$usuarioErr</p>";
+              echo "<p class='errorP'>$usuarioErr</p>";
             }
           ?>
           <div class="field">
@@ -98,13 +113,35 @@
               required
             />
           </div>
-          <div class="btn">
-            <button class="button1" type="submit">Login</button>
-            <a href="registro.php" class="">
-              <button class="button2" type="button">Registrarse</button>
-            </a>
+          <div class="field">
+            <svg
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              height="16"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+              class="input-icon"
+            >
+              <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"
+              ></path>
+            </svg>
+            <input
+              type="password"
+              class="input-field"
+              placeholder="Repite contraseña"
+              name="claveR"
+              required
+            />
           </div>
-          <button class="button3">Recordar la contraseña</button>
+          <?php
+            if(!empty(trim($claveRErr))){
+              echo "<p class='errorP'>$claveRErr</p>";
+            }
+          ?>
+          <div class="btn">
+            <button class="button3">Registra el usuario</button>
+          </div>
         </form>
       </div>
     </div>

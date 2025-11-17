@@ -2,53 +2,53 @@
   session_start();
 
   if(isset($_SESSION["usuario"])){
-    header("Location:index.php");
+    header("Location:../index.php");
   }
 
-  $usuario = $clave = $claveR = "";
-  $usuarioErr = $claveErr = $claveRErr = "";
+  $usuario = $clave = "";
+  $usuarioErr = $claveErr = "";
 
   if($_SERVER["REQUEST_METHOD"]==="POST"){
-    include("conexion.php");
+    require_once("../gestion/conexion.php");
 
-    $usuario=$_POST["usuario"];
-    $clave=$_POST["clave"];
-    $claveR=$_POST["claveR"];
+    $usuario = $_POST["usuario"];
+    $clave = $_POST["clave"];
 
-    $sqlSelect ="SELECT * FROM usuarios WHERE `nombre_usuario` = '$usuario'";
-    $resSelect = mysqli_query($conn,$sqlSelect);
-    if(mysqli_num_rows($resSelect)>0){
-      $usuarioErr = "Ese usuario ya esta en uso";
-    }else if($clave===$claveR){
-      $sqlInsert = "INSERT INTO usuarios(nombre_usuario, clave) VALUES ('$usuario', '$clave')";
-      if (mysqli_query($conn, $sqlInsert)) {
+    try{
+      $sql= "SELECT * FROM usuarios where nombre_usuario = '$usuario' AND clave='$clave'";
+
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
+
+      $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
+      $result = $stmt->fetchAll();
+
+      if(!empty($result)){
         $_SESSION["usuario"]=$usuario;
-        header("Location:index.php");
-      } else {
-        $usuarioErr = "Error: " . $sql . "<br>" . mysqli_error($conn);
+        header("Location:../index.php");
       }
-    }else {
-      $claveRErr="La contraseña que has puestos deben ser iguales";
-    }
-    
-    mysqli_close($conn);
-  }
 
+    }catch(PDOException $e) {
+      echo $sql . "<br>" . $e->getMessage();
+    }
+    $conn=null;
+    
+  }
 ?>
 
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8" />
-  <title>Registro</title>
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="login.css" />
+  <title>Login</title>
+  <link rel="stylesheet" href="../estilos/main.css" />
+  <link rel="stylesheet" href="../estilos/style2.css" />
 </head>
 <body>
   <main class="login">
     <div class="card">
       <div class="card2">
-        <form class="form" method="POST">
-          <p id="heading">Registrarse</p>
+        <form class="form" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+          <p id="heading">Login</p>
           <div class="field">
             <svg
               viewBox="0 0 16 16"
@@ -104,35 +104,13 @@
               required
             />
           </div>
-          <div class="field">
-            <svg
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              height="16"
-              width="16"
-              xmlns="http://www.w3.org/2000/svg"
-              class="input-icon"
-            >
-              <path
-                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"
-              ></path>
-            </svg>
-            <input
-              type="password"
-              class="input-field"
-              placeholder="Repite contraseña"
-              name="claveR"
-              required
-            />
-          </div>
-          <?php
-            if(!empty(trim($claveRErr))){
-              echo "<p>$claveRErr</p>";
-            }
-          ?>
           <div class="btn">
-            <button class="button3">Registra el usuario</button>
+            <button class="button1" type="submit">Login</button>
+            <a href="registro.php" class="registro">
+              <button class="button2" type="button">Registrarse</button>
+            </a>
           </div>
+          <button class="button3">Recordar la contraseña</button>
         </form>
       </div>
     </div>

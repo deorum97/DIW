@@ -1,0 +1,365 @@
+/* ======== GLOBAL ======== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+li {
+  list-style: none;
+  height: 100%;
+}
+
+/* ======== NAVBAR ======== */
+.navbar {
+  background: linear-gradient(180deg, #111 70%, #1e1e1e 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 3rem;
+  height: 4em;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  color: #f5f5f5;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+/* ======== LINKS ======== */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a,
+.nav-buttons a {
+  color: #d1d1d1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-buttons a:hover {
+  color: #fff;
+}
+
+/* ======== BOTONES GENERALES ======== */
+.btn-outline-dark {
+  color: #fff;
+  border: 1px solid #3a3a3a;
+  background-color: #2a2a2a;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+  background: linear-gradient(90deg, #00ff88, #0077ff);
+  border: 1px solid #0077ff;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 255, 150, 0.6);
+}
+
+/* ======== DROPDOWN BASE ======== */
+.dropdown {
+  position: relative;
+}
+
+.dropdown > .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  padding: 0 10px;
+}
+
+.dropdown-menu,
+.dropdown-menu-usuario {
+  display: none;
+  position: absolute;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  padding: 0.5rem 0;
+  border-radius: 5px;
+  width: 180px;
+  z-index: 10;
+}
+
+.dropdown-menu {
+  top: 2.5rem;
+  left: 0;
+}
+.dropdown-menu-usuario {
+  top: 1.5rem;
+  left: -2rem;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:hover .dropdown-menu-usuario {
+  display: block;
+}
+
+.dropdown-menu li a,
+.dropdown-menu-usuario li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  padding: 0 1rem;
+  text-align: center;
+  color: #ccc;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu-usuario li a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* ======== NAV BUTTONS ======== */
+.nav-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-buttons button {
+  background-color: #222;
+  color: #f1f1f1;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.nav-buttons button:hover {
+  background-color: #333;
+}
+
+/* ======== MAIN ======== */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+h1 {
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+section {
+  background-color: #121212;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* estilos login/regitro*/
+.login {
+  display: flex;
+  justify-content: center;
+  background-color: #252525;
+  height: 100dvh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 0.4em;
+  background-color: #171717;
+  border-radius: 25px;
+  transition: 0.4s ease-in-out;
+}
+
+.card,
+.card_lista {
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+  border-radius: 27px;
+  transition: all 0.3s;
+  margin: auto;
+}
+.card_lista {
+  width: 30%;
+}
+
+.card2 {
+  border-radius: 0;
+  transition: all 0.2s;
+}
+
+.card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+
+.card:hover,
+.card-lista:hover {
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+}
+
+#heading {
+  text-align: center;
+  margin: 2em;
+  color: rgb(255, 255, 255);
+  font-size: 1.2em;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.input-icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: white;
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #d3d3d3;
+}
+
+.form .btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 2.5em;
+}
+
+.registro {
+  width: 50%;
+  margin: 0;
+}
+.button1 {
+  padding-block: 0.5em;
+  border-radius: 5px;
+  margin-right: 0.5em;
+  border: none;
+  outline: none;
+  transition: 0.4s ease-in-out;
+  background-color: #252525;
+  color: white;
+  width: 50%;
+}
+
+.button1:hover {
+  background-color: black;
+  color: white;
+}
+
+.button2 {
+  padding-block: 0.5em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: 0.4s ease-in-out;
+  background-color: #252525;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.button2:hover {
+  background-color: black;
+  color: white;
+}
+
+.button3 {
+  margin-bottom: 3em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: 0.4s ease-in-out;
+  background-color: #252525;
+  color: white;
+  width: 100%;
+}
+
+.button3:hover {
+  background-color: red;
+  color: white;
+}
+
+.errorP {
+  margin-block: 0.5em;
+  color: red;
+  text-shadow: 2px 1px 6px #ff0000ad;
+  font-weight: bold;
+  font-size: larger;
+}
+
+/*Listas */
+
+section,
+.listas {
+  width: 70%;
+}
+article {
+  box-shadow: 0px 0px 10px 6px rgb(5, 5, 5);
+  background-color: rgb(5, 5, 5);
+  border-radius: 10px;
+}
+
+.descripcion,
+.elemento_lista {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.descripcion {
+  background: #0c0c0c;
+
+  &:first-child {
+    border-radius: 10px 10px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 10px 10px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.elemento_lista {
+  background: #1e1e1e;
+  border-bottom: 1px solid #171717;
+
+  &:last-child {
+    border: none;
+  }
+  p {
+    margin: 0;
+  }
+}

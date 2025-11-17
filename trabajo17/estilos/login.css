@@ -1,9 +1,9 @@
-/* From Uiverse.io by yashasvi9199 */
 .login {
   display: flex;
   justify-content: center;
   background-color: #252525;
   height: 100dvh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form {
@@ -134,4 +134,12 @@ a {
 .button3:hover {
   background-color: red;
   color: white;
+}
+
+.errorP {
+  margin-block: 0.5em;
+  color: red;
+  text-shadow: 2px 1px 6px #ff0000ad;
+  font-weight: bold;
+  font-size: larger;
 }
