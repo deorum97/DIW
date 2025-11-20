@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Jorge Rodríguez Moreno</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header class="navbar">
+            <div class="NPagina">
+                <p>Mi maravillosa web</p>
+            </div>
+            <div class="enlaces">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#datos">Datos</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </header>
+        <main>
+            <section class="inicio" id="inicio">
+                <h1>Bienvenido a mi maravilosa web</h1>
+                <p>¡¡¡SORPRESA!!!</p>
+                <a href="#servicios">
+                   Ver Servicios
+                </a>
+            </section>
+            <section class="secServicios" id="servicios">
+                <header>
+                    <p>Nuestros Servicios</p>
+                </header>
+                <section class="servicios">
+                    <article>
+                        <p><b>Servicio 1</b></p>
+                        <p>Diseño web limpio y funcional</p>
+                    </article>
+                    <article>
+                        <p><b>Servicio 2</b></p>
+                        <p>Optimización para diferentes dispositivos</p>
+                    </article>
+                    <article>
+                        <p><b>Servicio 3</b></p>
+                        <p>Soporte Técnico y mantenimiento</p>
+                    </article>
+                </section>
+            </section>
+            <section class="datos" id="datos">
+                <header>
+                    <p>Tabla de Ejemplo</p>
+                </header>
+                <section class="tabla">
+                    <table>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio Unitario</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr class="thcolor">
+                            <td>Laptop</td>
+                            <td>1200 €</td>
+                            <td>15</td>
+                            <td>18000 €</td>
+                        </tr>
+                        <tr class="thcolor">
+                            <td>Monitor 4K</td>
+                            <td>450 €</td>
+                            <td>20</td>
+                            <td>9000 €</td>
+                        </tr>
+                        <tr class="thcolor">
+                            <td>Teclado mecánico</td>
+                            <td>90 €</td>
+                            <td>50</td>
+                            <td>4500 €</td>
+                        </tr>
+                        <tr>
+                            <td>Total General</td>
+                            <td></td>
+                            <td></td>
+                            <td>31500 €</td>
+                        </tr>
+                    </table>
+                </section>
+            </section>
+            <section class="contacto" id="contacto">
+                <header>
+                    <p>Datos</p>
+                </header>
+                <section>
+                    <form action="#" method="get">
+                        <label>Edad (18-65 años)</label>
+                        <input type="number" name="" min="18" max="65" title="Introduce una edad válida entre 18 y 65" required>
+                        <label> Nombre:</label>
+                        <input type="text" name="" pattern="[A-Z a-z]*" title="Solo se pueden añadir letras y espacios, nada de números ni caracteres especiales" required>
+                        <label>DNI:</label>
+                        <input type="text" name="" pattern="[0-9]{8}[A-Za-z]{1}" title="Debes introducir un DNI valido 8 números y una letra" required>
+                        <br>
+                        <input type="submit" value="Enviar">
+                    </form>
+                </section>
+            </section>
+        </main>
+        <footer>
+            <p>2025 Jorge Rodríguez Moreno. Todos los derechos reservados</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,197 @@
+*{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+
+body{
+    background: #444;
+}
+
+
+.navbar{
+    background-color: #60F;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    color: white;
+
+    .NPagina{
+        font-size: large;
+        font-weight: bold;
+    }
+
+    .enlaces{
+
+        a{
+            text-decoration: none;
+            color:white;
+            transition: all 0.3s;
+            border-radius: 5px;
+            padding: 10px;
+            margin-left: 10px;
+            
+            &:hover{
+                background: rgb(139, 61, 255);
+            }
+        }
+    }
+}
+main{
+    background-color: #444;
+    
+
+    .inicio{
+        color: white;
+        text-align: center;
+        padding: 5em;
+        
+
+        p{
+            margin: 2em;
+        }
+
+        a{
+            background: #60F;
+            border-radius: 5px;
+            padding: 10px;
+            margin-block: 15px;
+        }
+    }
+
+    .secServicios, .datos, .contacto{
+        background-color: white;
+        border-radius: 10px;
+        padding: 50px;
+        margin: 10px;
+        header{
+            p{
+                color: #60F;
+                text-align: center;
+                font-size: 1.7em;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .secServicios{
+
+        .servicios{
+            margin-top: 2em;
+            display: grid;
+            justify-content: center;
+            justify-items: center;
+            transition: all .03s;
+            
+            @media screen and (width <= 1920px){
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @media screen and (width <= 1080px){
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2,1fr);
+                row-gap: 2em;
+            }
+
+            @media screen and (width <= 760px){
+                grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: repeat(3,1fr);
+                row-gap: 2em;
+            }
+
+            article{
+                background: #6DF;
+                box-shadow: 0 0px 11px 5px #606060;
+                border-radius: 5px;
+                padding-inline: 1em;
+                padding-block: 1em;
+                width: 80%;
+                transition: all .3s;
+                p{
+                    &:first-child{
+                        margin-bottom: 5px;
+                    }
+                }
+
+                &:hover{
+                    transform: translateY(-10px);
+                }
+            }
+        }
+    }
+
+    .tabla{
+        justify-items: center;
+
+        table{
+            margin-top: 2em;
+            width: 80%;
+            border-collapse: collapse;
+            tr{
+                text-align: start;
+                border-bottom: 1px solid lightgray;
+
+                th{
+                    background: #60F;
+                    color: white;
+                    text-align: start;
+                    padding: 15px;
+                }
+
+                td{
+                    padding: 15px;
+                }
+
+
+                &:last-child{
+                    background: #b9b9b9;
+                    color: black;
+                    font-weight: bold;
+                }
+            }
+
+            .thcolor:hover{
+                background: #6DF;
+            }
+        }
+    }
+
+    .contacto{
+        justify-items: center;
+
+        form{
+            background: #6DF;
+            border-radius: 5px;
+            margin-top: 30px;
+            padding: 25px;
+            width: fit-content;
+
+            label{
+                display: block;
+            }
+            input{
+                margin-block: 5px;
+            }
+            input[type="submit"]{
+                background: #60F;
+                color: white;
+                border: none;
+                padding: 15px;
+                border-radius: 10px;
+                font-size: 1.1em;
+            }
+        }
+    }
+}
+footer{
+    justify-items: center;
+    color: white;
+    p{
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+}
