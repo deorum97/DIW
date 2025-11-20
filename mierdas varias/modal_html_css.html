@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modal HTML + CSS sin JavaScript (Comentado)</title>
+
+<style>
+  /* ================= Estilos generales ================= */
+  body {
+    font-family: Arial, sans-serif; /* Tipografía base */
+    background: #f0f0f0; /* Fondo gris claro */
+    padding: 40px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  /* ================= Botón que abre el modal ================= */
+  .btn-abrir {
+    background: #007bff; /* Color azul */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-abrir:hover {
+    background: #0056b3; /* Azul más oscuro */
+  }
+
+  /* ================= Fondo oscuro del modal ================= */
+  /*
+     Usamos :target para mostrar el modal SIN JAVASCRIPT.
+     Cuando el enlace apunta al id #modal, este se "activa".
+  */
+  #modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6); /* Fondo semitransparente */
+    display: none; /* Oculto por defecto */
+  }
+
+  /* Mostrar cuando es el objetivo de la URL */
+  #modal:target {
+    display: block;
+  }
+
+  /* ================= Caja del modal ================= */
+  .modal-contenido {
+    background: white;
+    width: 60%;
+    max-width: 500px;
+    padding: 20px;
+    margin: 100px auto; /* Centrado vertical y horizontal */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    position: relative;
+  }
+
+  /* ================= Botón para cerrar ================= */
+  .cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #333;
+  }
+
+  .cerrar:hover {
+    color: red;
+  }
+</style>
+</head>
+<body>
+
+<h1>Modal HTML + CSS sin JavaScript</h1>
+
+<!-- Botón que abre el modal (usa un enlace a #modal) -->
+<a class="btn-abrir" href="#modal">Abrir modal</a>
+
+<!-- ================= MODAL ================= -->
+<div id="modal">
+  <div class="modal-contenido">
+
+    <!-- Botón (X) para cerrar. Va a un enlace vacío (#) -->
+    <a href="#" class="cerrar">&times;</a>
+
+    <h2>Este es un modal sin JavaScript</h2>
+    <p>
+      Este modal se abre usando únicamente HTML y CSS, gracias al selector
+      <strong>:target</strong>, que permite mostrar un elemento cuando es el objetivo del enlace.
+    </p>
+
+  </div>
+</div>
+
+</body>
+</html>

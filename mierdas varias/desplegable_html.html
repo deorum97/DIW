@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Desplegables en HTML (varias opciones sin JS) - Comentado</title>
+  <style>
+    /* Estilos base para presentación */
+    body { font-family: Arial, sans-serif; margin:20px; background:#f7f7f7; color:#222 }
+    h1 { text-align:center }
+    .card { background:#fff; padding:18px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom:18px }
+    .subtitle { font-weight:700; margin-bottom:10px }
+
+    /* ------------------ Estilo para select nativo ------------------ */
+    .form-row { max-width:420px }
+    select { padding:8px 10px; border-radius:6px; border:1px solid #ccc; width:100%; box-sizing:border-box }
+
+    /* ------------------ Detalles/summary (acordeón nativo) ------------------ */
+    details { border:1px solid #ddd; border-radius:6px; padding:10px; background:#fafafa }
+    summary { cursor:pointer; font-weight:600 }
+    details[open] { background:#fff }
+
+    /* ------------------ Dropdown personalizado (solo CSS) ------------------ */
+    .dropdown { position:relative; display:inline-block }
+    .dropdown-toggle { display:inline-block; padding:10px 14px; background:#007bff; color:#fff; border-radius:6px; text-decoration:none }
+    .dropdown-menu {
+      position:absolute;
+      top:calc(100% + 6px); /* justo debajo del botón */
+      left:0;
+      min-width:200px;
+      border-radius:8px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      background:#fff;
+      border:1px solid #e6e6e6;
+      display:none; /* oculto por defecto */
+      z-index:50;
+    }
+    .dropdown-menu a { display:block; padding:10px 12px; text-decoration:none; color:#222 }
+    .dropdown-menu a:hover { background:#f2f6ff }
+
+    /* Mostrar menú al pasar el ratón (hover) - solo CSS */
+    .dropdown:hover .dropdown-menu { display:block }
+
+    /* ------------------ Dropdown accesible con checkbox (sin JS) ------------------ */
+    /* Técnica: input checkbox oculto que hace toggle del menú. Útil si quieres click para abrir, no solo hover. */
+    .dd-check { position:relative; display:inline-block }
+    .dd-check input[type="checkbox"] { position:absolute; opacity:0; width:1px; height:1px; left:-9999px }
+    .dd-check-label { display:inline-block; padding:10px 14px; background:#28a745; color:white; border-radius:6px; cursor:pointer }
+    .dd-check-menu { position:absolute; left:0; top:calc(100% + 6px); display:none; background:#fff; border:1px solid #e6e6e6; box-shadow:0 6px 18px rgba(0,0,0,0.12); border-radius:8px; min-width:200px }
+    .dd-check-menu a { display:block; padding:10px 12px; text-decoration:none; color:#222 }
+    .dd-check-menu a:hover { background:#f7fff7 }
+    /* Mostrar menú cuando el checkbox está checked */
+    .dd-check input[type="checkbox"]:checked + .dd-check-label + .dd-check-menu { display:block }
+
+    /* Pequeños ajustes responsivos */
+    @media(max-width:480px){ .dropdown, .dd-check { width:100% } .dropdown-toggle, .dd-check-label { width:100%; box-sizing:border-box } }
+  </style>
+</head>
+<body>
+
+<h1>Desplegables en HTML (sin JavaScript) — Comentados</h1>
+
+<!-- ---------------- Select nativo ---------------- -->
+<div class="card">
+  <div class="subtitle">1) Select nativo (&lt;select&gt;)</div>
+  <p class="small">El control nativo es el más accesible y funciona en todos los navegadores y dispositivos. Ideal para formularios.</p>
+
+  <div class="form-row">
+    <!-- label asociado mediante for/id -->
+    <label for="pais">Selecciona un país:</label>
+    <select id="pais" name="pais">
+      <option value="">-- Elige --</option>
+      <option value="es">España</option>
+      <option value="mx">México</option>
+      <option value="ar">Argentina</option>
+      <option value="cl">Chile</option>
+    </select>
+  </div>
+</div>
+
+<!-- ---------------- details/summary (acordeón) ---------------- -->
+<div class="card">
+  <div class="subtitle">2) &lt;details&gt; / &lt;summary&gt; (acordeón nativo)</div>
+  <p class="small">Elemento semántico que permite mostrar/ocultar contenido con click sin JS. Soporta teclado y es accesible.</p>
+
+  <details>
+    <summary>Elige una opción (haz click para abrir)</summary>
+    <ul>
+      <li><a href="#opt1">Opción 1</a></li>
+      <li><a href="#opt2">Opción 2</a></li>
+      <li><a href="#opt3">Opción 3</a></li>
+    </ul>
+  </details>
+</div>
+
+<!-- ---------------- Dropdown personalizado (hover) ---------------- -->
+<div class="card">
+  <div class="subtitle">3) Dropdown personalizado (solo CSS, :hover)</div>
+  <p class="small">Aparece al pasar el ratón. No requiere JS, pero en móviles puede no ser ideal (sin hover).</p>
+
+  <div class="dropdown">
+    <!-- Botón visual para el menú -->
+    <a class="dropdown-toggle" href="#">Productos ▾</a>
+
+    <!-- Menú oculto que se muestra con :hover en el contenedor -->
+    <div class="dropdown-menu" role="menu" aria-label="Productos">
+      <a href="#ropa" role="menuitem">Ropa</a>
+      <a href="#electronica" role="menuitem">Electrónica</a>
+      <a href="#accesorios" role="menuitem">Accesorios</a>
+    </div>
+  </div>
+</div>
+
+<!-- ---------------- Dropdown accesible con checkbox (click para abrir) ---------------- -->
+<div class="card">
+  <div class="subtitle">4) Dropdown que funciona con click (checkbox hack, sin JS)</div>
+  <p class="small">Usa un input checkbox oculto para alternar el menú. Es útil cuando quieres abrir con click en móviles sin JS.</p>
+
+  <div class="dd-check">
+    <!-- Checkbox oculto que controla el estado abierto/cerrado -->
+    <input type="checkbox" id="dd-toggle" aria-hidden="true" />
+    <!-- Label actúa como botón; está asociado al checkbox -->
+    <label class="dd-check-label" for="dd-toggle">Categorías ▾</label>
+
+    <!-- Menú que se muestra cuando checkbox está checked (ver CSS) -->
+    <div class="dd-check-menu" role="menu" aria-label="Categorías">
+      <a href="#cat1" role="menuitem">Cat 1</a>
+      <a href="#cat2" role="menuitem">Cat 2</a>
+      <a href="#cat3" role="menuitem">Cat 3</a>
+    </div>
+  </div>
+</div>
+
+<!-- ---------------- Notas de accesibilidad ---------------- -->
+<div class="card">
+  <div class="subtitle">Notas de accesibilidad</div>
+  <ul>
+    <li>Usa &lt;label&gt; para los controles de formulario (select, checkbox).</li>
+    <li>Preferir el &lt;select&gt; nativo para formularios donde el usuario espera un control de selección.</li>
+    <li>Si usas dropdown personalizados, añade roles (menu, menuitem) y asegúrate de la navegación por teclado si implementas con JS; las soluciones sin JS tienen limitaciones en accesibilidad de teclado.</li>
+    <li>En móviles, :hover no funciona; considera usar la técnica del checkbox o &lt;details&gt; para click.</li>
+  </ul>
+</div>
+
+</body>
+</html>

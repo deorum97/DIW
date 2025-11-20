@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+.caja {
+    width: 150px;
+    height: 150px;
+    background: #9b59b6;
+    margin: 50px auto;
+    animation: girarCambiar 3s infinite alternate ease-in-out;
+}
+
+@keyframes girarCambiar {
+    0% {
+        transform: rotate(0deg);
+        background: #9b59b6;
+    }
+    50% {
+        transform: rotate(180deg);
+        background: #3498db;
+    }
+    100% {
+        transform: rotate(360deg);
+        background: #2ecc71;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="caja"></div>
+
+</body>
+</html>

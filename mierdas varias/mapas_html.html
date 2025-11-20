@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ejemplos de &lt;map&gt; y mapas en HTML (comentado)</title>
+  <style>
+    /* Estilos básicos para presentación */
+    body { font-family: Arial, sans-serif; margin: 20px; background:#f7f7f7; color:#222; }
+    h1 { text-align:center }
+    .card { background:#fff; padding:16px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08); margin-bottom:18px }
+    img.responsive { max-width:100%; height:auto; display:block }
+    .small { font-size:0.9rem; color:#555 }
+    svg { max-width:100%; height:auto; display:block }
+    .columns { display:grid; grid-template-columns: 1fr; gap:16px }
+    @media(min-width:900px){ .columns{ grid-template-columns: 1fr 1fr } }
+    .iframe-wrap { position:relative; padding-bottom:56.25%; height:0; overflow:hidden }
+    .iframe-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0 }
+  </style>
+</head>
+<body>
+
+<h1>Mapas en HTML — &lt;map&gt;, SVG y embeds (Todo comentado)</h1>
+
+<!-- ================================================= -->
+<!-- 1) MAPA DE IMAGEN (usemap y <map>)              -->
+<!-- Explicación: asociado a una imagen, define áreas   -->
+<!-- clicables con coords. Útil para imágenes de planos -->
+<!-- ================================================= -->
+<div class="card">
+  <h2>Mapa de imagen (&lt;img usemap&gt; + &lt;map&gt;)</h2>
+  <p class="small">Ejemplo con una imagen ficticia (usa tus propias coordenadas en función de la imagen real).</p>
+
+  <!-- La imagen debe tener atributos width/height conocidos para calcular coords -->
+  <!-- Aquí usamos una imagen de ejemplo (reemplaza src por tu imagen) -->
+  <img src="https://via.placeholder.com/800x400.png?text=Plano+ejemplo" 
+       alt="Plano ejemplo" 
+       usemap="#plano" 
+       class="responsive" 
+       width="800" height="400">
+
+  <!-- Elemento <map> con id/name que referencia usemap="#plano" -->
+  <map name="plano" id="plano">
+    <!-- AREA con forma rectangular: coords = left,top,right,bottom -->
+    <area shape="rect" coords="50,40,220,150" href="#zona1" alt="Zona 1" title="Ir a Zona 1">
+
+    <!-- AREA circular: coords = centerX,centerY,radius -->
+    <area shape="circle" coords="400,200,60" href="#zona2" alt="Zona 2" title="Ir a Zona 2">
+
+    <!-- AREA poligonal: coords = x1,y1,x2,y2,... -->
+    <area shape="poly" coords="600,40,750,80,700,180,580,140" href="#zona3" alt="Zona 3" title="Ir a Zona 3">
+  </map>
+
+  <p class="small">Consejos: las coordenadas deben calcularse con la resolución original de la imagen. Para imágenes responsive puedes usar scripts o imágenes SVG (ver más abajo) o usar atributos srcset/picture y mapster en JS si fuese necesario — aquí pediste sin JS, así que recomendamos SVG para responsividad pura.</p>
+</div>
+
+
+<!-- ================================================= -->
+<!-- 2) MAPA RESPONSIVE CON SVG (recomendado sin JS) -->
+<!-- SVG permite regiones clicables con <a> o <g> y es totalmente responsive -->
+<!-- ================================================= -->
+<div class="card">
+  <h2>Mapa interactivo con SVG (responsive, sin JavaScript)</h2>
+  <p class="small">SVG permite formas precisas, escalables y accesibles. Aquí cada &lt;rect&gt; o &lt;circle&gt; está envuelto en &lt;a&gt; para enlaces.</p>
+
+  <!-- Ejemplo simple: un "plano" con tres zonas clicables -->
+  <svg viewBox="0 0 800 400" role="img" aria-labelledby="svg-title" xmlns="http://www.w3.org/2000/svg">
+    <title id="svg-title">Plano SVG con zonas clicables</title>
+
+    <!-- Fondo (puede ser una imagen de fondo o polígonos) -->
+    <rect x="0" y="0" width="800" height="400" fill="#e9f5ff" />
+
+    <!-- Zona 1: rectángulo enlazado -->
+    <a xlink:href="#zona1" aria-label="Zona 1">
+      <rect x="50" y="40" width="170" height="110" fill="#ffcccb" stroke="#c75" rx="8"/>
+      <text x="60" y="100" font-size="20" fill="#333">Zona 1</text>
+    </a>
+
+    <!-- Zona 2: círculo enlazado -->
+    <a xlink:href="#zona2" aria-label="Zona 2">
+      <circle cx="400" cy="200" r="60" fill="#cbe5a8" stroke="#7aa"/>
+      <text x="370" y="205" font-size="18" fill="#333">Zona 2</text>
+    </a>
+
+    <!-- Zona 3: polígono enlazado -->
+    <a xlink:href="#zona3" aria-label="Zona 3">
+      <polygon points="600,40 750,80 700,180 580,140" fill="#ffd59e" stroke="#c82"/>
+      <text x="590" y="120" font-size="18" fill="#333">Zona 3</text>
+    </a>
+  </svg>
+
+  <p class="small">Ventaja: SVG escala sin pérdida y mantiene las áreas clicables correctamente en cualquier tamaño.</p>
+</div>
+
+
+<!-- ================================================= -->
+<!-- 3) EMBED DE MAPA (iframe) - OpenStreetMap ejemplo -->
+<!-- Nota: esto no usa JS propio pero depende del servicio embebido -->
+<!-- ================================================= -->
+<div class="card">
+  <h2>Mapa embebido (iframe) — OpenStreetMap</h2>
+  <p class="small">Usa un iframe si quieres mostrar un mapa real (OpenStreetMap, Google Maps, etc.). No requiere JS en tu HTML; el servicio inserta su propio JS dentro del iframe.</p>
+
+  <div class="iframe-wrap">
+    <!-- Ejemplo de embed centrado en Madrid (ajusta bbox según necesites) -->
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-3.7266%2C40.3125%2C-3.5176%2C40.4844&amp;layer=mapnik" 
+            title="Mapa OpenStreetMap embebido" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <p class="small">Consejo: para Google Maps necesitarás una API key si quieres usar la API; el embed iframe estándar no siempre requiere clave. Revisa las políticas del proveedor antes de usar en producción.</p>
+</div>
+
+
+<!-- ================================================= -->
+<!-- 4) MAPA DE IMAGEN RESPONSIVE (sin JS) - técnica con SVG overlay -->
+<!-- Explicación: combinar una imagen raster con un SVG transparente encima para mantener coords responsivas -->
+<!-- ================================================= -->
+<div class="card">
+  <h2>Imagen + SVG overlay (coords responsive sin JS)</h2>
+  <p class="small">Coloca la imagen dentro de un contenedor y superpone un SVG en la misma vista usando viewBox proporcional.</p>
+
+  <div style="position:relative; max-width:800px;">
+    <!-- Imagen de fondo -->
+    <img src="https://via.placeholder.com/800x400.png?text=Plano+fondo" alt="Fondo plano" class="responsive" />
+
+    <!-- SVG superpuesto en posición absoluta, las áreas se alinean con la imagen si ambas usan mismo aspect ratio -->
+    <svg viewBox="0 0 800 400" style="position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none;">
+      <!-- Para que los enlaces funcionen, el <a> debe permitir pointer-events. Aquí mostramos el ejemplo con rects semitransparentes -->
+      <a xlink:href="#zona1" style="pointer-events:auto;">
+        <rect x="50" y="40" width="170" height="110" fill="rgba(255,0,0,0.15)" stroke="#c75"/>
+      </a>
+      <a xlink:href="#zona2" style="pointer-events:auto;">
+        <circle cx="400" cy="200" r="60" fill="rgba(0,200,0,0.12)" stroke="#070"/>
+      </a>
+    </svg>
+  </div>
+
+  <p class="small">Recomendado para planos responsive cuando no se quiere usar JS. Asegúrate que la relación de aspecto de la imagen y del viewBox coincidan.</p>
+</div>
+
+
+<!-- ================================================= -->
+<!-- 5) ACCESIBILIDAD Y BUENAS PRÁCTICAS
+     - añadir alt en imágenes
+     - usar <title> y roles en SVG
+     - ofrecer enlaces alternativos (lista) para usuarios de teclado/lectores
+-->
+<!-- ================================================= -->
+<div class="card">
+  <h2>Accesibilidad y alternativas</h2>
+  <p class="small">Siempre ofrece alternativas: una lista de enlaces debajo del mapa para quienes no puedan interactuar con el gráfico.</p>
+
+  <ul>
+    <li><a href="#zona1">Ir a Zona 1 (enlace alternativo)</a></li>
+    <li><a href="#zona2">Ir a Zona 2</a></li>
+    <li><a href="#zona3">Ir a Zona 3</a></li>
+  </ul>
+
+  <p class="small">También incluye descripciones textuales (captions) y asegúrate de que los elementos sean alcanzables por teclado (enlaces &lt;a&gt; son focusables por defecto).</p>
+</div>
+
+
+</body>
+</html>

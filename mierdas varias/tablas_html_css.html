@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejemplos de Tablas en HTML con CSS Comentado</title>
+
+  <!-- ================= CSS TOTALMENTE COMENTADO ================= -->
+  <style>
+    /* === Estilos generales de la página === */
+    body {
+      font-family: Arial, sans-serif; /* Fuente principal */
+      margin: 20px; /* Margen exterior */
+      background: #f5f5f5; /* Fondo gris claro */
+      color: #333; /* Color del texto */
+    }
+
+    h1 {
+      text-align: center; /* Centra el título */
+      margin-bottom: 30px; /* Separación inferior */
+    }
+
+    /* === Contenedor visual para cada ejemplo === */
+    .card {
+      background: #fff; /* Fondo blanco */
+      padding: 20px; /* Espaciado interno */
+      border-radius: 10px; /* Bordes redondeados */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra suave */
+      margin-bottom: 30px; /* Espacio entre tarjetas */
+    }
+
+    /* === Estilos de las tablas === */
+    table {
+      width: 100%; /* Ocupa todo el ancho disponible */
+      border-collapse: collapse; /* Elimina espacios entre celdas */
+      margin-top: 10px; /* Separación respecto al título */
+    }
+
+    /* Borde y fondo de encabezados */
+    th {
+      background: #007bff; /* Azul */
+      color: white; /* Texto blanco */
+      padding: 12px; /* Espaciado */
+      border: 1px solid #0056b3; /* Borde azul oscuro */
+      text-align: left; /* Texto alineado a la izquierda */
+    }
+
+    /* Celdas normales */
+    td {
+      padding: 10px; /* Espaciado interno */
+      border: 1px solid #ccc; /* Borde gris claro */
+    }
+
+    /* Filas alternas (efecto zebra) */
+    tr:nth-child(even) {
+      background: #f0f0f0; /* Gris más claro */
+    }
+
+    /* Filas al pasar el ratón */
+    tr:hover {
+      background: #d0e7ff; /* Azul muy claro */
+    }
+
+    /* Estilo para títulos dentro de las tarjetas */
+    .subtitle {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* Tablas con bordes redondeados */
+    .rounded-table td, .rounded-table th {
+      border-radius: 6px; /* Esquinas redondeadas */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ejemplos de Tablas en HTML con CSS (Todo Comentado)</h1>
+
+  <!-- ================= TABLA BÁSICA ================= -->
+  <div class="card">
+    <div class="subtitle">Tabla básica</div>
+
+    <!-- Tabla simple con encabezados y filas -->
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th> <!-- Encabezado de columna -->
+          <th>Edad</th>
+          <th>Ciudad</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Ana</td> <!-- Celda de datos -->
+          <td>23</td>
+          <td>Madrid</td>
+        </tr>
+        <tr>
+          <td>Juan</td>
+          <td>30</td>
+          <td>Barcelona</td>
+        </tr>
+        <tr>
+          <td>Lucía</td>
+          <td>28</td>
+          <td>Valencia</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ================= TABLA CON FOOTER ================= -->
+  <div class="card">
+    <div class="subtitle">Tabla con header, body y footer</div>
+
+    <!-- Ejemplo completo con <tfoot> -->
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Manzanas</td>
+          <td>10</td>
+          <td>5€</td>
+        </tr>
+        <tr>
+          <td>Naranjas</td>
+          <td>6</td>
+          <td>4€</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="2"><strong>Total</strong></td> <!-- Une dos columnas -->
+          <td>9€</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- ================= TABLA CON CELDAS COMBINADAS ================= -->
+  <div class="card">
+    <div class="subtitle">Tabla con celdas combinadas (rowspan y colspan)</div>
+
+    <!-- rowspan combina filas, colspan combina columnas -->
+    <table>
+      <tr>
+        <th rowspan="2">País</th> <!-- Ocupa 2 filas verticalmente -->
+        <th>Ciudad</th>
+        <th>Población</th>
+      </tr>
+
+      <tr>
+        <th>Capital</th>
+        <th>Habitantes</th>
+      </tr>
+
+      <tr>
+        <td>España</td>
+        <td>Madrid</td>
+        <td>3.2M</td>
+      </tr>
+
+      <tr>
+        <td>Francia</td>
+        <td>París</td>
+        <td>2.1M</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ================= TABLA ESTILIZADA REDONDEADA ================= -->
+  <div class="card">
+    <div class="subtitle">Tabla estilizada con bordes redondeados</div>
+
+    <table class="rounded-table">
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Duración</th>
+          <th>Nivel</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>HTML y CSS</td>
+          <td>20h</td>
+          <td>Básico</td>
+        </tr>
+        <tr>
+          <td>JavaScript</td>
+          <td>30h</td>
+          <td>Intermedio</td>
+        </tr>
+        <tr>
+          <td>React</td>
+          <td>40h</td>
+          <td>Avanzado</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

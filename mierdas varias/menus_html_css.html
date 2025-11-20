@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menús HTML + CSS sin JavaScript (Comentado)</title>
+
+  <!-- ================= CSS TOTALMENTE COMENTADO ================= -->
+  <style>
+    /* === Estilo base de la página === */
+    body {
+      font-family: Arial, sans-serif; /* Fuente general */
+      background: #f5f5f5; /* Fondo gris claro */
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center; /* Centrar título */
+      margin-bottom: 25px;
+    }
+
+    /* === CONTENEDOR GENERAL DE EJEMPLOS === */
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .subtitle {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+
+    /* ===================================================== */
+    /* ============ MENÚ HORIZONTAL BÁSICO ================= */
+    /* ===================================================== */
+
+    .menu-horizontal {
+      list-style: none; /* Quita los puntos */
+      padding: 0;
+      display: flex; /* Alinea elementos horizontalmente */
+      background: #007bff; /* Fondo azul */
+      border-radius: 8px;
+      overflow: hidden; /* Suaviza bordes */
+    }
+
+    .menu-horizontal li a {
+      display: block;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none; /* Quitar subrayado */
+      transition: 0.2s;
+    }
+
+    .menu-horizontal li a:hover {
+      background: #0056b3; /* Azul más oscuro */
+    }
+
+
+    /* ===================================================== */
+    /* ============ MENÚ VERTICAL ========================== */
+    /* ===================================================== */
+
+    .menu-vertical {
+      list-style: none;
+      padding: 0;
+      width: 200px; /* Ancho fijo */
+      background: #343a40; /* Gris oscuro */
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .menu-vertical li a {
+      display: block;
+      padding: 12px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #222; /* Línea separadora */
+      transition: 0.2s;
+    }
+
+    .menu-vertical li a:hover {
+      background: #495057; /* Gris intermedio */
+    }
+
+
+    /* ===================================================== */
+    /* ============ MENÚ DESPLEGABLE (DROP-DOWN) =========== */
+    /* ============ Solo con CSS, sin JavaScript =========== */
+    /* ===================================================== */
+
+    .menu-dropdown {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      background: #28a745; /* Verde */
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .menu-dropdown li {
+      position: relative; /* Permite posición absoluta del submenú */
+    }
+
+    .menu-dropdown a {
+      display: block;
+      padding: 12px 18px;
+      color: white;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .menu-dropdown a:hover {
+      background: #1e7e34; /* Verde más oscuro */
+    }
+
+    /* Submenú oculto por defecto */
+    .submenu {
+      display: none; /* Se oculta inicialmente */
+      position: absolute;
+      top: 100%; /* Debajo del botón principal */
+      left: 0;
+      background: #2ecc71; /* Verde claro */
+      list-style: none;
+      padding: 0;
+      border-radius: 0 0 8px 8px;
+      min-width: 150px;
+    }
+
+    .submenu li a {
+      padding: 10px;
+      border-bottom: 1px solid #1f9f59;
+    }
+
+    /* Mostrar submenú cuando el li se pasa con el mouse */
+    .menu-dropdown li:hover .submenu {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+
+<h1>Menús HTML + CSS sin JavaScript (Todo Comentado)</h1>
+
+<!-- ============================================================= -->
+<!-- ================= MENÚ HORIZONTAL ============================ -->
+<!-- ============================================================= -->
+<div class="card">
+  <div class="subtitle">Menú horizontal básico</div>
+
+  <!-- Menú simple alineado a la izquierda -->
+  <ul class="menu-horizontal">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Servicios</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- ================= MENÚ VERTICAL ============================== -->
+<!-- ============================================================= -->
+<div class="card">
+  <div class="subtitle">Menú vertical</div>
+
+  <!-- Menú dispuesto verticalmente -->
+  <ul class="menu-vertical">
+    <li><a href="#">Panel</a></li>
+    <li><a href="#">Usuarios</a></li>
+    <li><a href="#">Ajustes</a></li>
+    <li><a href="#">Cerrar sesión</a></li>
+  </ul>
+</div>
+
+
+<!-- ============================================================= -->
+<!-- ============== MENÚ DESPLEGABLE SIN JS ====================== -->
+<!-- ============================================================= -->
+<div class="card">
+  <div class="subtitle">Menú desplegable (Drop-down) sin usar JavaScript</div>
+
+  <!-- Menú con submenús que aparecen solo usando CSS -->
+  <ul class="menu-dropdown">
+    <li>
+      <a href="#">Inicio</a>
+    </li>
+
+    <li>
+      <a href="#">Productos ▾</a> <!-- Flechita visual -->
+
+      <!-- Submenú -->
+      <ul class="submenu">
+        <li><a href="#">Ropa</a></li>
+        <li><a href="#">Tecnología</a></li>
+        <li><a href="#">Accesorios</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="#">Ayuda ▾</a>
+
+      <!-- Submenú -->
+      <ul class="submenu">
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Soporte</a></li>
+        <li><a href="#">Foros</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="#">Contacto</a>
+    </li>
+  </ul>
+
+</div>
+
+</body>
+</html>
