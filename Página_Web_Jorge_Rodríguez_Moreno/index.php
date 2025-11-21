@@ -39,7 +39,7 @@
                   <a href="#" class="dropdown-toggle"><?php echo $_SESSION["usuario"]; ?> ▾</a>
                   <ul class="dropdown-menu-usuario">
                     <li><a href="listas/listas.php">Mis gastos</a></li>
-                    <li><a href="mantenimiento">Perfil</a></li>
+                    <li><a href="mantenimiento.php">Perfil</a></li>
                   </ul>
                 </li>
                 <a href="gestion/unLogin.php">
@@ -73,17 +73,17 @@
                 <a href="index.php">🏠 Inicio</a>
             </li>
 
-            <li class="menu-section">Gestión</li>
+            <li class="menu-section">Gestión<span class="nota"> (requiere no estar logueado)</span></li>
             <ul class="submenu">
                 <li><a href="gestion/login.php">🔐 Login</a></li>
                 <li><a href="gestion/registro.php">📝 Registro</a></li>
             </ul>
 
-            <li class="menu-section">Listas <span class="nota">(requiere login)</span></li>
+            <li class="menu-section">Listas <span class="nota">(requiere estar logueado)</span></li>
             <ul class="submenu">
                 <li><a href="Listas/listas.php">📄 Ver listas</a></li>
                 <li><a href="Listas/crearLista.php">➕ Crear lista</a></li>
-                <li><a href="Listas/crearMoroso.php">⚠️ Crear moroso</a></li>
+                <li><a href="Listas/crearMoroso.php">➕ Crear moroso</a></li>
             </ul>
 
             <li class="menu-item">
